@@ -13,7 +13,7 @@ services:
       - "--web.console.templates=/usr/share/prometheus/consoles"
       - "--web.enable-admin-api"
     volumes:
-      - /home/quelle/prometheus-grafana/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
       - prometheus_data:/prometheus
     ports:
       - 9090:9090
@@ -39,9 +39,14 @@ services:
       - HOSTNAME="grafana.tomsplayground.de"
       - GF_RENDERING_SERVER_URL=http://grafana_renderer:8081/render
       - GF_RENDERING_CALLBACK_URL=http://grafana:3000/
+      - GF_SMTP_ENABLED=${GF_SMTP_ENABLED}
+      - GF_SMTP_HOST=${GF_SMTP_HOST}
+      - GF_SMTP_USER=${GF_SMTP_USER}
+      - GF_SMTP_PASSWORD=${GF_SMTP_PASSWORD}
+      - GF_SMTP_FROM_ADDRESS=${GF_SMTP_FROM_ADDRESS}
     volumes:
-      - /home/quelle/prometheus-grafana/grafana/grafana.ini:/etc/grafana/grafana.ini
-      - /home/quelle/prometheus-grafana/grafana/datasource.yml:/etc/grafana/provisioning/datasources/datasource.yaml
+      - ./grafana.ini:/etc/grafana/grafana.ini
+      - ./datasource.yml:/etc/grafana/provisioning/datasources/datasource.yaml
       - grafana-storage:/var/lib/grafana
     ports:
       - 3000:3000
