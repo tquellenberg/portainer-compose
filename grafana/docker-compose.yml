@@ -13,7 +13,7 @@ services:
       - "--web.console.templates=/usr/share/prometheus/consoles"
       - "--web.enable-admin-api"
     volumes:
-      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - ${PWD}/prometheus.yml:/etc/prometheus/prometheus.yml
       - prometheus_data:/prometheus
     ports:
       - 9090:9090
@@ -45,8 +45,8 @@ services:
       - GF_SMTP_PASSWORD=${GF_SMTP_PASSWORD}
       - GF_SMTP_FROM_ADDRESS=${GF_SMTP_FROM_ADDRESS}
     volumes:
-      - ./grafana.ini:/etc/grafana/grafana.ini
-      - ./datasource.yml:/etc/grafana/provisioning/datasources/datasource.yaml
+      - ${PWD}/grafana.ini:/etc/grafana/grafana.ini
+      - ${PWD}/datasource.yml:/etc/grafana/provisioning/datasources/datasource.yaml
       - grafana-storage:/var/lib/grafana
     ports:
       - 3000:3000
