@@ -33,5 +33,8 @@ services:
       
 volumes:
   mysql:
+    name: nginx-proxy-manager_mysql
   appdata:
+    name: nginx-proxy-manager_appdata
   letsencrypt:
+    name: nginx-proxy-manager_letsencrypt
