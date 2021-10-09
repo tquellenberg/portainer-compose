@@ -3,7 +3,7 @@ version: '3'
 services:
   db:
     image: mariadb
-    command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
+    command: --innodb_read_only_compressed=OFF --transaction-isolation=READ-COMMITTED --binlog-format=ROW
     restart: always
     user: "${PUID}:${PGID}"
     volumes:
