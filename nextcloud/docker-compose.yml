@@ -1,11 +1,8 @@
-version: '3'
-
 services:
   db:
     image: mariadb:11.4
     command: --innodb_read_only_compressed=OFF --transaction-isolation=READ-COMMITTED --binlog-format=ROW
     restart: always
-    user: "${PUID}:${PGID}"
     volumes:
       - db:/var/lib/mysql
     environment:
