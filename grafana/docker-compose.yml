@@ -59,7 +59,7 @@ services:
       - monitoring
       
   renderer:
-    image: grafana/grafana-image-renderer:9.5.21
+    image: grafana/grafana-image-renderer:latest
     container_name: grafana_renderer
     restart: unless-stopped
     ports:
