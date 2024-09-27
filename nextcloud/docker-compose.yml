@@ -13,6 +13,8 @@ services:
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
       - MYSQL_DATABASE=${MYSQL_DATABASE}
       - MYSQL_USER=${MYSQL_USER}
+      - MARIADB_AUTO_UPGRADE=1
+      - MARIADB_DISABLE_UPGRADE_BACKUP=1
 
   app:
     image: nextcloud:apache
@@ -26,8 +28,14 @@ services:
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
       - MYSQL_DATABASE=${MYSQL_DATABASE}
       - MYSQL_USER=${MYSQL_USER}
+      - REDIS_HOST=redis
     depends_on:
       - db
+      - redis
+
+  redis:
+    image: redis
+    restart: always
 
   cron:
     image: nextcloud:apache
