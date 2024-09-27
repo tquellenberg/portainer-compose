@@ -33,7 +33,7 @@ services:
       - monitoring
 
   grafana:
-    image: grafana/grafana:latest
+    image: grafana/grafana:9.5.21
     container_name: grafana
     restart: unless-stopped
     environment:
@@ -59,7 +59,7 @@ services:
       - monitoring
       
   renderer:
-    image: grafana/grafana-image-renderer:latest
+    image: grafana/grafana-image-renderer:9.5.21
     container_name: grafana_renderer
     restart: unless-stopped
     ports:
